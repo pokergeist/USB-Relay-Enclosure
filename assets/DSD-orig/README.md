@@ -20,6 +20,6 @@ Here's the board with the case removed.
 
 ![board](4-dsd.jpg)
 
-And finally the bottom of the board. You can see labelling of the terminals and that there's no interference for board supports at the corners. I don't know what the empty solder terminals connect to.
+And finally the bottom of the board. You can see labeling of the terminals and that there's no interference for board supports at the corners. The empty solder terminals connect to USB Vcc and ground.
 
 ![bottom](5-dsd.jpg)
