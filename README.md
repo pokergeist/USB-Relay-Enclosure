@@ -21,6 +21,8 @@ There are a number of similar designs without cases which probably use the the s
 
 The case is a clamshell design that separates with the patient use of a spudger or pen knife. There are (6) small acrylic pins that hold the halves together. The board is well supported and positioned within the case.
 
+See the photos in [DSD-orig](assets/DSD-orig).
+
 ## The Enclosure via OpenSCAD
 
 My enclosure was developed using OpenSCAD, a programming language that is used to render 3-D objects for visualization and export to a standard STL file, which can then be used for 3-D printing. Elements are defined parametrically so they can be modified easily and immediately visualized and printed.
