@@ -20,7 +20,7 @@ usb_dy = 0;
 usb_dz  = t_pcb - pcb_thickness/2 - usb_z*0.4; // for USB plug
 usb_dz2 = t_pcb - pcb_thickness/2 + usb_z*0.1; // for window
 
-wr = 1;   // window relief
+wr  = 1;  // window relief
 wru = 3;  // extra relief for USB port
 
 cable_port_y = 11.9;
@@ -35,7 +35,7 @@ t_relay = t_pcb + relay_z;
 bdr = 1.5;                  // board relief
 box_x = board_x + bdr * 2;  // interior dimensions
 box_y = board_y + bdr * 2;
-box_height = t_relay+2.2;
+box_height = t_relay+1.2;
 box_wall  = 2;
 box_walls = box_wall * 2;
 

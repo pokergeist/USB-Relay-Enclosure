@@ -3,7 +3,7 @@
  */
 
 /********************************************************
- * Object are placed with bottom on the XY plane using
+ * Objects are placed with bottom on the XY plane using
  * align=V_TOP. This eliminates a lot of up(obj_z/2)
  * moves. The floor of the box becomes the new reference
  * plane. Posts are placed on the floor, board is placed
@@ -28,6 +28,7 @@ $fn = 50;
 SHOW_BOARD = false;    // false before exporting STL!
 HIDE_SHELL = false;    // for visualizing internals
 
+color("MediumSpringGreen")
 build_it();     // MAIN 
 
 module build_it() {
@@ -48,13 +49,14 @@ module build_it() {
               "DarkSlateGrey",
               -((board_x-relay_x)/2-8.1), 0, t_pcb);
     board();
-  }
+  } //SHOW_BOARD
 
   // enclosure
-  color("MediumSpringGreen") {
-    hz_pins();
-    vert_pins();
-  }
+  color("red")
+  hz_pins_2();  // just two pins on the left now
+  color("blue")
+  vert_pins();
+
   if (! HIDE_SHELL) {
  
     difference() {
@@ -73,8 +75,8 @@ module build_it() {
              EDGES_X_ALL, -(box_x + box_wall)/2,
              0, t_pcb+cable_port_z/2);    
     }
-  }
-} // build_it
+  } // HIDE_SHELL
+} // build_it()
 
 module usb () {
   color("silver")
@@ -105,7 +107,8 @@ module window (x, y, z, edg, dx, dy, dz) {
 // combo post for support, pin for contraint, & guide pin
 module vert_pins() {
   // guide (pointy) pin
-  pposts(pin_dia, "blue", post_dx, post_dy, post_height + pin_ht);
+  pposts(pin_dia, post_dx, post_dy, post_height + pin_ht,
+         2,2);
   // constraint pin
   up(post_height)
   posts(pin_dia, pin_ht, post_dx, post_dy, 2, 2);
@@ -114,9 +117,25 @@ module vert_pins() {
 }
 
 // combo post for support, pin for contraint, & guide pin
+// only on left (terminal) side
+module hz_pins_2() {
+  // guide (pointy) pin
+  left(hpost_dx/2) {
+    pposts(pin_dia, hpost_dx, hpost_dy, post_height + pin_ht,
+           2, 1);
+    // constraint pin
+    up(post_height)
+    posts(pin_dia, pin_ht, hpost_dx, hpost_dy, 2, 1);
+    // support post
+    posts(post_dia, post_height, hpost_dx, hpost_dy, 2, 1);
+  }
+}
+
+// combo post for support, pin for contraint, & guide pin
 module hz_pins() {
   // guide (pointy) pin
-  pposts(pin_dia, "blue", hpost_dx, hpost_dy, post_height + pin_ht);
+  pposts(pin_dia, hpost_dx, hpost_dy, post_height + pin_ht,
+         2, 2);
   // constraint pin
   up(post_height)
   posts(pin_dia, pin_ht, hpost_dx, hpost_dy, 2, 2);
@@ -138,10 +157,9 @@ module pin(dx, dy) {
   }
 }
 
-module pposts(dia, color, dx, dy, dz) {
+module pposts(dia, dx, dy, dz, r, c) {
   translate([0, 0, dz])
-  grid2d(rows=2, cols=2, spacing=[dx, dy])
-  color(color)
+  grid2d(rows=r, cols=c, spacing=[dx, dy])
   cyl(d1=dia, d2=dia/2, h=dia*0.85, align=V_TOP);
 }
 

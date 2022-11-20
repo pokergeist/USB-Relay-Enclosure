@@ -10,21 +10,33 @@ There are a number of similar designs without cases which probably use the the s
 
 |    Date    | Status         |
 | :--------: | -------------- |
+| 2022-11-20 | Done.          |
 | 2022-11-18 | First release. |
 
 ## ToDo List
 
-* Enlarge the USB window vertically a bit since it sits lower in the case now (steeper angle on insert).
-* Remove or modify the front supports on the USB since they're interfering with insertion.
-* Add photos or the board with the original case.
+* -none-
 
 ## Board Extraction
 
 The case is a clamshell design that separates with the patient use of a spudger or pen knife. There are (6) small acrylic pins that hold the halves together. The board is well supported and positioned within the case.
 
-## The Enclosure
+## The Enclosure via OpenSCAD
 
 My enclosure was developed using OpenSCAD, a programming language that is used to render 3-D objects for visualization and export to a standard STL file, which can then be used for 3-D printing. Elements are defined parametrically so they can be modified easily and immediately visualized and printed.
+
+My OpenSCAD code uses some Booleans that can help visualize the package.
+
+```
+SHOW_BOARD = false;    // false before exporting STL!
+HIDE_SHELL = false;    // for visualizing internals
+```
+
+SHOW_BOARD shows the printed circuit board and some components. HIDE_SHELL hides the shell mostly so you can see the internal structures. OpenSCAD has a transparent feature but it doesn't seem to work well with the rounded corners.
+
+I uses color() to highlight areas of interest. There's a final color("MediumSpringGreen") (~line 31) that applies to the entire object. This needs to be commented out to see the component colors.
+
+I added a hz_pins_2() function to just print pins on the left (terminal block) side and left the original hz_pins() function in place.
 
 ## Files
 
@@ -38,9 +50,9 @@ There are two files sets that I provide:
 
 OpenSCAD tool: [OpenSCAD.org](https://openscad.org/)
 
-The Belfry OpenScad Library [revarbat/BOSL](revarbat/BOSL).
+The Belfry OpenSCAD Library [revarbat/BOSL](revarbat/BOSL).
 
-Place the BOSL and my libs dirs in your OpenSCAD libraries directory (e.g., Documents/OpenSCAD/libraries/).
+Place the BOSL and mylibs dirs in your OpenSCAD libraries directory (e.g., Documents/OpenSCAD/libraries/).
 
 ### Photo
 
@@ -49,6 +61,8 @@ Place the BOSL and my libs dirs in your OpenSCAD libraries directory (e.g., Docu
 ## Fitment
 
 The DSD board snaps snuggly into place once the USB plug end is carefully inserted through the USB window opposite of the ribbed end. Then just press down and everything should snap gently into place. There is a cable port opposite the USB window that allows you to insert wires into the NO, COM, and NC ports such that you can secure them with the terminal screws from above.
+
+It may help to shorten the leads of the wire terminal connector with a pair of "nippy" or flush cutter pliers so that they don't catch on the edge of the enclosure, but new lower case and larger USB window has resolved the issue for me.
 
 The lid simply snaps on.
 
