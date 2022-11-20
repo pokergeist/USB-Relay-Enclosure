@@ -2,7 +2,9 @@
 
 ## Overview
 
-The "DSD TECH  USB Relay Controller for Computer and Laptop (1CH)" lets you control a single SPDT relay via USB. I purchased my device on [Amazon](https://smile.amazon.com/dp/B09PYML6Q7). It comes (mostly) enclose in a transparent blue case with the relay and screw terminals exposed, along with the back half of the board. The client preferred that the internals not be so accessible.
+The "DSD TECH  USB Relay Controller for Computer and Laptop (1CH)" lets you control a single SPDT relay via USB. I purchased my device on [Amazon](https://smile.amazon.com/dp/B09PYML6Q7). It comes (mostly) enclosed in a transparent blue case with the relay and screw terminals exposed, along with the back half of the board. The client preferred that the internals not be so accessible.
+
+There are a number of similar designs without cases which probably use the the same board size. If the board size is different, just modify board_x, board_y, and board_height in SCAD/DSD-Encl-common.scad in OpenSCAD and render DSD-Encl-base.scad and save the STL file (Windows F5, F6, F7).
 
 ## Status
 
@@ -18,7 +20,7 @@ The "DSD TECH  USB Relay Controller for Computer and Laptop (1CH)" lets you cont
 
 ## Board Extraction
 
-The case is a clamshell design that separates with the patient use of a spudger or pen knife. There are (8) small acrylic pins that hold the halves together. The board is well supported and positioned within the case.
+The case is a clamshell design that separates with the patient use of a spudger or pen knife. There are (6) small acrylic pins that hold the halves together. The board is well supported and positioned within the case.
 
 ## The Enclosure
 
